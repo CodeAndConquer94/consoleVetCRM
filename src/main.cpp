@@ -58,6 +58,7 @@ int modificationMenu(){
 
 int main() {
     Customers myCustomers;
+    myCustomers.readCustomers();
 
     while (true) {
         int ch = mainMenu();
@@ -76,6 +77,7 @@ int main() {
                 myCustomers.removeCust();
             }
             else if (ch == 0) {
+                myCustomers.saveCustomers();
                 exit(0);
             }
             else {

@@ -248,7 +248,7 @@ vector<string> Customers::readCSVlines() {
 
 void Customers::saveCustomers() {
     vector<string> lines = readCSVlines();
-    ofstream custFile{"data/customers.csv", ios::app};
+    ofstream custFile{"data/customers.csv", ios::out | ios::trunc};
     if (!custFile.is_open()) {
         throw runtime_error("Could not open file: customers.csv");
     }
@@ -283,7 +283,7 @@ void Customers::removeFromCSV(Person& cust) {
     }
     for (const string line : lines) {
         if (line != target) {
-            custFile << line;
+            custFile << line << "\n";
         }
     }
     custFile.close();
