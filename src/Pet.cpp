@@ -59,6 +59,7 @@ void Pet::setPetType(const int& tp) {
             break;
     }
 }
+void Pet::setPetType(string tp) {type = tp;}
 void Pet::setPetBreed(const string& brd) {breed = formatString(brd);}
 
 //Getters

@@ -35,6 +35,7 @@ class Pet {
         void setPetName(const string& nm);
         void setPetDOB(const int& mm, const int& dd, const int& yyyy);
         void setPetType(const int& tp = 0);
+        void setPetType(string tp);
         void setPetBreed(const string& brd);
     
     //Getters

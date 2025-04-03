@@ -152,3 +152,39 @@ string Person::toCSVline(){
     return oss.str();
 
 }
+
+Person* Person::fromCSVline(string line) {
+    stringstream ss(line);
+    string token;
+    vector<string> fields;
+    while (getline(ss, token, ',')) {
+        fields.push_back(token);
+    }
+
+    string first = fields[0];
+    string last = fields[1];
+    string street = fields[2];
+    string city = fields[3];
+    string state = fields[4];
+    size_t zip = static_cast<size_t>(stoi(fields[5]));
+
+    Address adrs(street, city, state, zip);
+    Person* newCust = new Person(first, last, adrs);
+
+    for (int i = 6; i + 5 < fields.size(); i += 6){
+        string name = fields[i];
+        int mm = stoi(fields[i+1]);
+        int dd = stoi(fields[i+2]);
+        int yy = stoi(fields[i+3]);
+        string type = fields[i+4];
+        string breed = fields[i+5];
+        Pet* newPet = new Pet();
+        newPet->setPetName(name);
+        newPet->setPetDOB(mm, dd, yy);
+        newPet->setPetType(type);
+        newPet->setPetBreed(breed);
+        newCust->pets + newPet;
+    }
+
+    return newCust;
+}
