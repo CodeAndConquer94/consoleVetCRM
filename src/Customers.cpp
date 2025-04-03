@@ -262,3 +262,20 @@ void Customers::readCustomers() {
     }
 }
 
+void Customers::removeFromCSV(Person* cust) {
+    string target = cust->toCSVline();
+    vector<string> lines = readCSVlines();
+
+    ofstream custFile("data/customers.csv", ios::out | ios::trunc);
+
+    if (!custFile.is_open()) {
+        throw runtime_error("Could not open file: customers.csv");
+    }
+    for (const string line : lines) {
+        if (line != target) {
+            custFile << line;
+        }
+    }
+    custFile.close();
+
+}

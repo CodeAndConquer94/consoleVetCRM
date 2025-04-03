@@ -27,8 +27,7 @@ class Customers {
         void saveCustomers();
         vector<string> readCSVlines();
         void readCustomers();
-        void addToCSV();
-        void removeFromCSV();
+        void removeFromCSV(Person* cust);
 
 };
 
