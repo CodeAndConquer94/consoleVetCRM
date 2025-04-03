@@ -60,7 +60,8 @@ class Person {
         void deletePet();
         bool operator==(const Person& other) const;
 
-    //Sort
+    //Utility
+        string toCSVline();
         
 
 

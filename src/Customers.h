@@ -23,6 +23,9 @@ class Customers {
         void displayCust(const Person& cust);
         Person& selectCust(int x);
 
+        void saveCustomers();
+        void readCustomers();
+
 };
 
 #endif

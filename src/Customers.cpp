@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -217,4 +218,11 @@ void Customers::modifyCust(Person& cust, int x){
 
 void Customers::displayCust(const Person& selected){
     cout << selected << endl;
+}
+
+
+
+void Customers::saveCustomers() {
+    ofstream custFile{"data/customers.csv", ios::out};
+
 }

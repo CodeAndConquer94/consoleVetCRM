@@ -16,6 +16,7 @@
 #include <vector>
 #include <iomanip>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -130,4 +131,24 @@ bool sortLastThenFirst(const Person* a, const Person* b) {
         return a->fname < b->fname;
     }
     return a->lname < b->lname;
+}
+
+string Person::toCSVline(){
+    ostringstream oss;
+    oss << fname << "," << lname << "," 
+        << address.getStreetName() << "," 
+        << address.getCityName() << "," 
+        << address.getStateName() << "," 
+        << address.getZipCode();
+
+    for (Pet* pet: pets){
+        oss << "," << pet->getPetName() 
+            << ","  << pet->getPetDOB().getMonth() 
+            << "," << pet->getPetDOB().getDay() 
+            << "," << pet->getPetDOB().getYear() 
+            << "," << pet->getPetType() 
+            << "," << pet->getPetBreed();
+    }
+    return oss.str();
+
 }

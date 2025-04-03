@@ -18,6 +18,10 @@ class Date
         explicit Date( int = 1, int = 1, int = 1900 ); // default constructor and parameterized constructor
         string dateString(); // print date in month/day/year format 
         ~Date(); // provided to confirm destruction order
+        int getMonth();
+        int getDay();
+        int getYear();
+
 
     
 }; // end class Date

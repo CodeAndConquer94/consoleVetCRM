@@ -53,3 +53,7 @@ unsigned int Date::checkDay( int testDay )
 
     throw std::invalid_argument( "Invalid day for currentmonth and year");
 } // end function checkDay
+
+int Date::getMonth() { return month; }
+int Date::getDay() { return day; }
+int Date::getYear() {return year; }
