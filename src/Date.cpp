@@ -1,14 +1,3 @@
-/**
- * @file Date.cpp
- * @author Sai Krishna Karnam
- * @brief
- * @version 0.1
- * @date 2024-03-24
- *
- * @copyright Copyright (c) 2024 University of Colorado Denver - Department of Computer Science
- *
- */
-
 #include "Date.h"
 
 // Fig. 9.18: Date.cpp 
