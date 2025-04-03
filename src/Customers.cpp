@@ -86,6 +86,7 @@ void Customers::removeCust() {
 
     for (size_t i = 0; i < customers.size(); i++) {
         if (customers[i]->getFirstName() == first && customers[i]->getLastName() == last){
+            removeFromCSV(*customers[i]);
             delete customers[i];
             customers.erase(customers.begin() + i);
             break;
@@ -184,8 +185,10 @@ Person& Customers::selectCust(int x){
 }
 
 void Customers::modifyCust(Person& cust, int x){
+
     switch (x) {
         case 1: {
+            removeFromCSV(cust);
             string first, last;
             cout << "Enter first name: ";
             getline(cin, first);
@@ -196,20 +199,27 @@ void Customers::modifyCust(Person& cust, int x){
             cust.setFirstName(first);
             cust.setLastName(last);
             resort();
+            saveCustomers();
             break;
             }
         case 2: {
+            removeFromCSV(cust);
             Address newAdd;
             cin >> newAdd;
             cust.setAddress(newAdd);
+            saveCustomers();
             break;
             }
         case 3: {
+            removeFromCSV(cust);
             cust.addPet();
+            saveCustomers();
             break;
             }
         case 4: {
+            removeFromCSV(cust);
             cust.deletePet();
+            saveCustomers();
             break;
             }
         case 0: {throw "";} 
@@ -262,8 +272,8 @@ void Customers::readCustomers() {
     }
 }
 
-void Customers::removeFromCSV(Person* cust) {
-    string target = cust->toCSVline();
+void Customers::removeFromCSV(Person& cust) {
+    string target = cust.toCSVline();
     vector<string> lines = readCSVlines();
 
     ofstream custFile("data/customers.csv", ios::out | ios::trunc);
