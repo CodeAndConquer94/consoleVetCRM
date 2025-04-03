@@ -149,6 +149,7 @@ string Person::toCSVline(){
             << "," << pet->getPetType() 
             << "," << pet->getPetBreed();
     }
+    oss << "\n";
     return oss.str();
 
 }

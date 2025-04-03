@@ -14,6 +14,7 @@ class Customers {
         void resort();
 
     public:
+        Customers(): customers{} {};
         bool custExists(const string& fname, const string& lname);
         void addCust();
         void removeCust();
@@ -24,7 +25,10 @@ class Customers {
         Person& selectCust(int x);
 
         void saveCustomers();
+        vector<string> readCSVlines();
         void readCustomers();
+        void addToCSV();
+        void removeFromCSV();
 
 };
 

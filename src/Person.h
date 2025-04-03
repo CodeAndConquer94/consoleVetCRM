@@ -62,7 +62,7 @@ class Person {
 
     //Utility
         string toCSVline();
-        Person* fromCSVline(string line);
+        static Person* fromCSVline(string line);
         
 
 

@@ -220,9 +220,45 @@ void Customers::displayCust(const Person& selected){
     cout << selected << endl;
 }
 
-
+vector<string> Customers::readCSVlines() {
+    ifstream custFile("data/customers.csv", ios::in);
+    vector<string> lines;
+    string line;
+    if (!custFile.is_open()) {
+        throw runtime_error("Could not open file: customers.csv");
+    }
+    while (getline(custFile, line)){
+        if (!line.empty()) {
+            lines.push_back(line);
+        }
+    }
+    custFile.close();
+    return lines;
+}
 
 void Customers::saveCustomers() {
-    ofstream custFile{"data/customers.csv", ios::out};
+    vector<string> lines = readCSVlines();
+    ofstream custFile{"data/customers.csv", ios::app};
+    if (!custFile.is_open()) {
+        throw runtime_error("Could not open file: customers.csv");
+    }
+    for (Person* cust : customers) {
+        string target = cust->toCSVline();
+
+        bool alreadyExists = (find(lines.begin(), lines.end(), target) != lines.end());
+
+        if (!alreadyExists) {
+                custFile << target;
+        }
+    }
+    custFile.close();
 
 }
+
+void Customers::readCustomers() {
+    vector<string> lines = readCSVlines();
+    for (string line : lines) {
+        customers.push_back(Person::fromCSVline(line));
+    }
+}
+
